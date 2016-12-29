@@ -3,17 +3,24 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class Runner {
-
+	private static List<Bus> buses;
 	public static void main(String[] args) {
+		buses = new ArrayList<Bus>();
+		buses.add(new Bus("J", "http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=chapel-hill&r=J&s=joneabbe"));
 		final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-		executorService.scheduleAtFixedRate(Runner::getRouteSchedule, 0, 1, TimeUnit.SECONDS);
+		executorService.scheduleAtFixedRate(Runner::getBusSchedule, 0, 1, TimeUnit.SECONDS);
+	}
+	private static void getBusSchedule() {
+		buses.forEach(Bus::printSchedule);
 	}
 	public static void getRouteSchedule() {
 		URL url = null;
