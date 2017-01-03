@@ -1,3 +1,4 @@
+package bus;
 import java.io.IOException;
 
 public class Bus {
@@ -19,4 +20,14 @@ public class Bus {
 			System.out.println("Error obtaining schedule");
 		}
 	}
+	/*
+	public String getSchedule(){
+		try {
+			schedule.getSchedule();
+		} catch (IOException e) {
+			System.out.println("Error obtaining schedule");
+		}
+	}
+	*/
+	
 }
