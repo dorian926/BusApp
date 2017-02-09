@@ -14,6 +14,7 @@ public class Bus {
 	}
 	
 	public void printSchedule(){
+		System.out.println(name);
 		try {
 			schedule.getSchedule();
 		} catch (IOException e) {
